@@ -35,7 +35,7 @@
     // Light
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
 
-    // Function to spawn cubes
+    // Function to spawn cylinders
     function spawncylinder() {
       const forward = camera.getDirection(BABYLON.Axis.Z); // direction phone is pointing
       const cylinder = BABYLON.MeshBuilder.CreateBox("cylinder", { size: 0.5 }, scene);
@@ -45,7 +45,7 @@
       return cylinder;
     }
 
-    // Tap to add cube
+    // Tap to add cylinder
     canvas.addEventListener("click", () => {
       spawncylinder();
     });
@@ -53,8 +53,8 @@
     // Render loop
     engine.runRenderLoop(() => {
       scene.meshes.forEach(m => {
-        if (m.name.startsWith("cube")) {
-          m.rotation.y += 0.01; // spin cubes
+        if (m.name.startsWith("cylinder")) {
+          m.rotation.y += 0.01; // spin cylinders
         }
       });
       scene.render();
